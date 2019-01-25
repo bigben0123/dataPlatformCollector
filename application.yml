@@ -1,0 +1,41 @@
+server:
+  port: 80
+#server.ssl.key-store=classpath:keystore.p12
+#server.ssl.key-store-password=123456
+#server.ssl.keyStoreType=PKCS12
+#server.ssl.keyAlias=tomcat
+
+#kafuka producer
+spring:
+  kafka:
+    bootstrap-servers: ip:9092 
+    template:
+      default-topic: testmsg
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      acks: 1
+
+
+harvest:
+  config:
+    hehe: normal
+    txtarray: 1,2,3,a  #这种对象形式的，只能单独写一个对象去接收，所以无法使用@value注解获取
+    listmap:
+      - host: zxj
+        port: 10
+        active: 9
+      - host: ly
+        port: 11
+        active: 8
+    liststr:
+      - name
+      - value
+    routeMapping:
+      hsapplog: data-platform-topic
+      hsserverlog: data-platform-topic
+    clientsMap:
+      hs-app: 123456
+      tv-android-app: 123456
+      app: app
+      app1: app1
